@@ -1,0 +1,148 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{erk}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage[top=22.5mm, bottom=22.5mm, left=22.5mm, right=22.5mm]{geometry}
+
+\usepackage[slovene,english]{babel}
+
+% local definitions
+\def\footnotemark{}%  to avoid footnote on cover page
+
+\begin{document}
+%make title
+\title{UDP-ARCNET strežnik za krmiljenje robota PA-10}
+
+\author{Timotej Gašpar$^{1}$, Leon Žlajpah$^{2}$} % use ^1, ^2 for author(s) from different institutions
+
+\affiliation{$^{1}$Fakulteta za elektrotehniko\\ 
+$^{2}$Institut Jožef Štefan}
+
+\email{E-pošta: timotej.gaspar@gmail.com}
+
+\maketitle
+
+%\thispagestyle{empty}
+
+\begin{abstract}{UDP-ARCNET server for kontrol of PA-10 robot}
+
+Industrial robots usually have a servo motor controller that allowes users very limited control. In the case of the Mitsubishi Portable Intelligent Arm PA-10 the manufacturer provides a good documentation on the servo driver. It allowes the user to know all the parameters of servo motor regulation. The servo also allowes the user to control each motor separatly in velocity or torque mode oppening various options in terms of experimentation. The servo controller has an ARCNET module for comunication in the ARCNET network.
+A UDP-ARCNET server was built as a man in the middle for servo controller communication. The server allowes the users to control the robot via costum programs that allow UDP communication. For testing purposes an admitance control was implemented.
+
+\end{abstract}
+
+
+\selectlanguage{slovene}
+
+\section{Uvod}
+
+Raziskovalne institucije, ki raziskujejo algoritme vodenja robotov imajo izbiro ali konstruirajo svojega robota in s tem poznajo vse njegove dinamične lastnosti ter točno vedo kako se krmilijo motorji ali pa se odločijo za uporabo industrijskega robota. V slednjem primeru pa so prepuščeni podatkom, ki jih dobijo od proizvajalca. Tem pa običajno ni v interesu podati vseh podatkov glede konstrukcije robota ter zgradbe servo krmilnika zaradi bojazni, da bodo prišli v roke konkurenčnim podjetjem.
+Robotski mehanizem Mitsubishi Portable Inteligent Arm PA-10 je iz tega razloga idealen za raziskovalne namene. Poleg že tako bogate dokumentacije in odprtosti krmilnika ga odlikuje še razširjenost po raznih raziskovalnih instituciaj, kar pomeni, da so njegovi dinamični parametri zelo dobro poznani. 
+
+
+\section{Robotski mehanizem PA-10}
+
+Podjetje Mitsubishi Heavy Industries je leta 1992 izdelalo prvega katalogiranega industrijskega redundatnega robota \cite{mhi_pa10}. Podjetje je robota poimenovalo Portable General-purpose Intelligent Arm PA-10, krajše PA-10. Gre za serijskega robota s sedmimi stopnjami prostosti (slika \ref{fig:pa10drawing}). Prvi trije sklepi so označeni kot ramenski sklepi (shoulder), S1, S2, S3. Naslednja dva sta označena kot komolčni sklepi (elbow), E1, E2. Zadnja dva sklepa pa sta označena kot zapestna (wrist), W1, W2. Glede na zgradbo ga uvrščamo v tako imenovane antropomorfne robote \cite{craig_robintro}.
+
+Masa robotske roke PA-10 je 36 kg in ima nosilnost 10 kg. Servo motorji v sklepih se napajajo preko izmenične napetosti. Prenosi med v sklepih so realizirani z harmoničnimi gonili. Baza robota da se lahko pritrdi v katerokoli lego. To pomeni, da se ga lahko fiksira bodisi na tla, na steno ali na strop. Robota PA-10 odlikuje relativno lahka konstrukcija, enostavno rokovanje ter odprtost njegovega krmilnika. Prav ti razlogi so povod, da je mnogo instituciji vzelo tega robota kot eksperimentalni sistem za razvijanje raznih algoritmov vodenja (\cite{voung_pa10}, \cite{aalst_pa10}, \cite{rodrigo_pa10},\cite{petric_nevronska}).
+
+\section{UDP-ARCNET strežnik}
+
+V prejšnjem poglavju je bil opisan kinematični in dinamičen model robotskega mehanizma. V sklepih robota PA-10 so servo motorji na izmenični tok. Krmiljenje motorjev se izvaja v krmilniku, ki ga proizvajalec priloži ob nakupu robota. Krmilnik omogoča vodenje servo motorjev bodisi preko referenčne hitrosti ali referenčnega navora. V krmilniku je vgrajen ARCNET vmesnik, ki omogoča priklop krmilnika v ARCNET omrežje. Na ta način je omogočena komunikacija s krmilnikom \cite{pa10-manual}.
+
+Z uspešnim vodenjem robota brez taktilne povratne zanke je mogoče izvesti mnogo različnih nalog. V zgornjem poglavju je bil opisan dinamičen model robota. S poznavanjem vseh parametrov je v teoriji mogoče izračunati sile, ki delujejo na vrh robota $\textbf{h}_o$. V praksi se izkaže, da te parametre ni vedno mogoče dovolj natančno definirati. Iz teh razlogov se vgradi senzor sil in navorov med vrhom robota ter prijemalom (\cite{almassri_pressure_sensor}, \cite{mihelj_vodenje}, \cite{eppinger_force_dynamics}). Senzor sil in navorov JR3 je bil uporabljen pri izvedbi tega dela.
+
+Želja po združitvi vodenja robota in merjenja sil je privedla do tega, da so avtorji tega dela naredili strežnik ki to omogoča. Dodaten razlog je bil to, da prejšnja programska oprema za komunikacijo s servo krmilnikom, ni zadoščala časovnemu kriteriju delovanja s frekvenco 500 Hz.
+
+\subsection{Krmilnik servo motorjev robota} \label{sec:servo-drive}
+
+V prvem poglavju je bilo zapisano, da robota PA-10 med drugim odlikuje prenosnost. To se velja tako za samo robotsko roko kot tudi za krmilnik servo motorjev. Krmilnik z ohišjem ima dimenzije $262 \times 331 \times 396$ mm in tehta 22 Kg. Za sprednji strani krmilnika sta dva zračnika, na zadnji pa so priključki in stikala.
+
+%\input{./Slike/pa10-servocontroller.tex}
+
+V ohišju servo krmilnika so vgrajeni štirje krmilniki servo motorjev. Vsak servo krmilnik krmili dva servo motorja, razen enega. Krmilniki omogočajo vodenje motorjev na dva načina. Prvi način je navorno, drugi pa hitrostno. Različna vodenja sta v krmilnikih drugače realizirana. Navorno vodenje je realizirano z analognim P regulatorjem toka, hitrostna regulacija pa je realizirana z digitalnim PI regulatorjem s frekvenco približno 1500 Hz.
+
+Krmilnik vsebuje dva pomnilnika. Delovni pomnilnik (RAM) in nastavitveni pomnilnik (EEPROM). V EEPROM tabeli so zapisani razni parametri za nastavitve in vodenje servo krmilnikov. Ob vžigu krmilnika se parametri naložijo iz EEPROM tabele v RAM. Med temi parametri so tudi ojačanje proporcionalnega ter integracijskega dela regulatorja, omejitve posameznih stopenj, razmerje prenosa zobnikov, itd.
+
+\subsection{ARCNET vmesnik}\label{sec:arc_drive}
+
+Referenčne navore in hitrosti se na krmilniku nastavlja na preko zunanjega vmesnika, ki je povezan na isto ARCNET omrežje kot servo krmilnik. Priključitev na ARCNET omrežje servo krmilniku omogoča v ohišje vgrajen ARCNET modul. ARCNET je omrežje, ki vključuje podatkovni in fizični nivo po OSI modelu. Njegova prednost pred Ethernet omrežjem je velika stopnja determinističnosti \cite{arc_tutorial}. Krmilnik ima dva priključka za optična 
+vodila, vhod (Rx) ter izhod (Tx). Zgornja meja hitrosti komunikacije za robota PA-10 je 5 Mb/s \cite{pa10-manual}.
+
+ARCNET komunikacija je serijska in paketno zastavljena. Za komunikacijo z modulom je potrebno vsak paket primerno sestaviti. Po \cite{pa10-manual} je potrebno paket začeti z naslovom modula, sledi bajt, ki označuje veliko črko po ASCII formatu, v nadaljevanju. ARCNET modul dodatno vsebuje logiko za preklapljanje med različnimi stanji. Med stanji preklapljamo s pošiljanjem ustrezne črke v paketu. Različna stanja pa so:
+
+
+\begin{itemize}
+	\item Izpis EEPROM tabele,
+	\item Vpis v EEPROM tabelo,
+	\item Vpis v RAM tabelo,
+	\item Kopiranje iz RAM v EEPROM tabelo,
+	\item Postavitev kotov na ničelno vrednost,	
+	\item Sporstitev zavor,
+	\item Vodenje sklepov,
+	\item Čakanje
+\end{itemize}
+
+Ko višje nivojski vmesnik ne pošilja nobenih ukazov je ARCNET vmesnik v čakanju. V tem stanju čaka na primerno sestavljen paket.
+
+V tem delu se je v večini uporabljalo način za vodenje sklepov. Ta način se izbere tako, da se ARCNET vmesniku najprej pošlje ukaz, ki se začne z velikim tiskanim S (ASCII DEC 65), nadaljuje se s pošiljanjem paketov, ki se začnejo s veliko tiskano črko C (ASCII DEC 67) ter zaključi s tem, da se pošlje paket, ki se začne z velikim tiskanim E (ASCII 69) (slika \ref{fig:controlmode}). Pri tem načinu delovanja je potrebno posvetiti nekaj pozornosti frekvenci pošiljanja. V kolikor paketi ne pridejo do ARCNET vmesnika v intervalu specificiranem v EEPROM tabeli na krmilniku, bo vmesnik šel iz tega načina delovanja nazaj na način čakanje.
+
+Paket, ki se začne s C in nosi podatke o krmiljenju sklepov robota je velik 35 bajtov, 5 za vsak sklep. Prvi bajt je kontrolni in samo prvi trije  biti nosijo podatke o vodenju:
+
+\begin{enumerate}
+	\item vklop ali izklop mehanske zavore (1 - vklop, 0 - izklop)
+	\item vklop ali izklop servo motorja (1 - vklop, 0 - izklop)
+	\item izbira navornega ali hitrostnega načina (1 - navorni, 0 - hitrostni)
+\end{enumerate}
+Drugi in tretji bajt nosijo podatek o referenčnem navoru na sklepu. Ta podatek bo uporabljen le, če je servo motor nastavljen na navorni način delovanja. Dvobajtni podatek pa je v formatu 0.001 Nm/digit.
+Četrti in peti bajt nosijo podatek o referenčni hitrosti na sklepu. Podatek je tako kot pri navornem delovanju v uporabi le, ko vodimo servo motor na hitrostnem načinu. Dvobajtni podatek je v formatu 0.0002 rad/s/digit.
+
+\subsection{Senzor sile in navorov - JR3}
+
+Za namene vodenja opisanega v poglavju \ref{chap:admitance} je med vrhom robota ter prijemalom pritrdilo senzor sil JR3. Senzor nam omogoča merjenje sil in navorov v X, Y in Z oseh. Senzor je narejen iz uporovnih lističev porazdeljenih po notranjosti v obliki križa. Iz specifikacij senzorja \cite{jr3_doc_ext} je razvidno, da uporablja 8 uporovnih lističev. S tem, ko na senzor deluje zunanja sila ali navor, pride do deformacije materjala na katerem so nameščeni uporovni lističi in se upornost na uporovnih lističih spremeni proporcionalno s silo in togostjo senzorja. Sprememba upornosti se izmeri posredno preko spremembe napetosti na AD-pretvorniku, ki je vgrajen v sam senzor. Napetost se pretvori v silo preko množenja s kalibracijsko matriko \textbf{K}. Naj bo $\textbf{h}_{JR3}$ vektor sil, ki delujejo na senzor in naj bo $\mathbf{\omega}_u$ vektor napetosti na AD-pretvorniku. Enačba za izračun sil je
+
+\begin{equation}
+\textbf{h}_{JR3} = \textbf{K} \mathbf{\omega}_u
+\end{equation}
+
+
+
+Senzor se priključi preko 6 ali 8 žičnega kabla na računalniško kartico, ki je bodisi na ISA ali PCI vodilu. Kabel serijsko pošilja podatke o izmerjenih silah na kartico. Kartica vsebuje vezje za digitalno obdelavo signalov. V dokumentaciji kartice \cite{jr3_doc_inst} so opisani trije nizkoprepustni filtri z različnimi mejnimi frekvencami. V tem delu se je uporabilo filter z mejno frekvenco 500 Hz.
+
+Na računalniku, ki se je uporabljal za to delo, je nameščena kartica na vodilu ISA. Ker je standard starejši, je podjetje prenehalo s podporo tega standarda. Kot posledica tega so avtorji tega dela razvili svojo programsko opremo za komunikacijo z notranjimi registri kartice. Osnovne informacije o podatkih do katerih se lahko dostopa po registrih se nahajajo v dokumentaciji \cite{jr3_doc_inst}.
+Dokumentacija navaja, da v kolikor želi uporabnik odčitati vrednost sile ali navora $F$ mora tako prebrati osnovno vrednost $F_s$ na registru imenovanem (\verb|full scale|), jo pomnožiti z vrednostjo $F_f$, ki je na registru izbranega filtra (\verb|current force|). Na zadnje more to vrednost delit s konstanto $K_p$, da pretvori v primerne enote(N ali Nm).
+
+\begin{equation}\label{eq:force_filt}
+F = \frac{F_s  F_f}{K_p}
+\end{equation}
+Ker senzor meri silo in navor v treh smereh je potrebno opraviti izračun za vsako od izmerjenih veličin potrebno opravit omenjeno operacijo.
+
+\subsection{Strežnik} \label{sec:streznik}
+
+Proizvajalec Mitsubishi Heavy Industries je za upravljanje in programiranje robota pripravil posebno programsko opremo. Iz dokumentacije je razvidno kaj je vse njihova programska oprema omogočala. Težava pa je, da omenjena programska oprema ni več dostopna. Proizvajalec je s prodajo robotov PA-10 prenehal v letu 2009, s podporo pa v marcu 2014 (vir: osebno dopisovanje s proizvajalcem). Iz tega razloga je nastala potreba, po lastnem programu, ki bi lahko komuniciral s servo krmilnikom.
+
+Pred začetkom izdelave lastnega programskega orodja se je definiralo dve zahtevi. Prva je bila, da program deluje kar se le da hitro in kar se le da v realnem času. To izhaja iz vidika stabilnosti vodenja. Avtor v \cite{mihelj_hapt} namreč navaja, da vzorčni čas močno vpliva na stabilnost vodenja robota v kontaktu z okolico. Večja kot je vzorčna frekvenca večja je lahko togost okolice s katero je robot v kontaktu.
+
+Druga zahteva pa je bila enostavna uporaba. Želeli smo, da uporaba programske opreme, ki jo naredimo, zahteva čim manj predznanja o komunikacijskih protokolih po ARCNET mreži. Hkrati pa mora program omogočati neko mero svobode pri realizaciji visoko nivojskega vodenja.
+
+Dodatno se je kasneje pojavila še želja, da bi programska oprema omogočala tudi posredovanje meritev izvedenih na senzorju sile JR3. Tako bi nastal nek program, ki bi komuniciral tako s servo kontrolerjem kot s ISA kartico za senzor sile JR3.
+
+Naštete zahteve so privedle do izbire primernega operacijskega sistema in programskega jezika. Tako je bil razvit strežnik v programskem jeziku C na operacijskem sistemu Linux. Strežnik deluje kot posrednik med dvema različnima omrežjema, ARCNET in UDP.  V nadaljevanju bo opisana zgradba tega strežnika, delovanje ter uporaba.
+
+
+
+\subsection{Oddaja prispevka}
+
+
+\small
+\begin{thebibliography}{1}
+
+\bibitem{ERK} ERK, http://www.ieee.si/erk/index.html 
+\bibitem{Zbornik} B. Zajc, A. Trost: Zbornik triindvajsete mednarodne Elektrotehniške in računalniške konference ERK 2014, 22. - 24. September 2014, Portorož, Slovenija
+
+\end{thebibliography}
+
+\end{document}
