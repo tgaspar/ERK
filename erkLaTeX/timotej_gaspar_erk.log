@@ -1,13 +1,22 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.5.18)  9 JUL 2015 13:23
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.1.22)  11 JUL 2015 19:06
 entering extended mode
 **timotej_gaspar_erk.tex
-(timotej_gaspar_erk.tex
-LaTeX2e <2015/01/01>
-Babel <3.9l> and hyphenation patterns for 69 languages loaded.
-("C:\Program Files\MiKTeX\tex\latex\base\article.cls"
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX\tex\latex\base\size10.clo"
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(C:\Users\Vaio\Documents\GitHub\ERK\erkLaTeX\timotej_gaspar_erk.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -21,20 +30,20 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files\MiKTeX\tex\latex\base\inputenc.sty"
-Package: inputenc 2015/03/17 v1.2c Input encoding file
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files\MiKTeX\tex\latex\base\utf8.def"
-File: utf8.def 2014/09/29 v1.1m UTF-8 support for inputenc
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files\MiKTeX\tex\latex\base\t1enc.dfu"
-File: t1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00AB (decimal 171)
@@ -183,8 +192,8 @@ File: t1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files\MiKTeX\tex\latex\base\ot1enc.dfu"
-File: ot1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00B8 (decimal 184)
@@ -214,8 +223,8 @@ File: ot1enc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files\MiKTeX\tex\latex\base\omsenc.dfu"
-File: omsenc.dfu 2014/09/29 v1.1m UTF-8 support for inputenc
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -237,35 +246,36 @@ Now handling font encoding U ...
    defining Unicode char U+2026 (decimal 8230)
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
-)) (erk.sty)
-("C:\Program Files\MiKTeX\tex\latex\psnfss\times.sty"
+))
+(C:\Users\Vaio\Documents\GitHub\ERK\erkLaTeX\erk.sty)
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\times.sty"
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-("C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty"
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty"
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-("C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty"
-Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: pdftex.def on input line 94.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files\MiKTeX\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files\MiKTeX\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count87
@@ -273,18 +283,18 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-("C:\Program Files\MiKTeX\tex\latex\geometry\geometry.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files\MiKTeX\tex\generic\oberdiek\ifpdf.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files\MiKTeX\tex\generic\oberdiek\ifvtex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files\MiKTeX\tex\generic\ifxetex\ifxetex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count88
@@ -300,33 +310,33 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen112
 \Gm@dimlist=\toks17
 
-("C:\Program Files\MiKTeX\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files\MiKTeX\tex\latex\babel\babel.sty"
-Package: babel 2014/09/25 3.9l The Babel package
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Program Files\MiKTeX\tex\latex\00miktex\bblopts.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("C:\Program Files\MiKTeX\tex\latex\babel-slovenian\slovene.ldf"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\slovene.ldf"
 Language: slovene 2005/03/31 v1.2m Slovene support from the babel system
 
-("C:\Program Files\MiKTeX\tex\latex\babel\babel.def"
-File: babel.def 2014/09/25 3.9l Babel common definitions
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count91
 \U@D=\dimen113
 )
 Package babel Info: Making " an active character on input line 79.
 )
-("C:\Program Files\MiKTeX\tex\latex\babel-english\english.ldf"
-Language: english 2012/08/20 v3.3p English support from the babel system
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\english.ldf"
+Language: english 2005/03/30 v3.3o English support from the babel system
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-(timotej_gaspar_erk.aux)
+(C:\Users\Vaio\Documents\GitHub\ERK\erkLaTeX\timotej_gaspar_erk.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
@@ -340,9 +350,11 @@ LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 15.
- ("C:\Program Files\MiKTeX\tex\latex\psnfss\ot1ptm.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-) ("C:\Program Files\MiKTeX\tex\context\base\supp-pdf.mkii"
+)
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count92
 \scratchdimen=\dimen114
@@ -405,159 +417,160 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 26.
 
-Overfull \hbox (2.29517pt too wide) in paragraph at lines 42--44
+Overfull \hbox (2.29517pt too wide) in paragraph at lines 47--49
 \OT1/ptm/m/n/10 bot-ski me-ha-ni-zem Mit-su-bi-shi Por-ta-ble In-te-li-gent Arm
  PA-
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 48.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 53.
 
-LaTeX Warning: Citation `mhi_pa10' on page 1 undefined on input line 48.
+LaTeX Warning: Citation `mhi_pa10' on page 1 undefined on input line 53.
 
 
-LaTeX Warning: Reference `fig:pa10drawing' on page 1 undefined on input line 48
+LaTeX Warning: Reference `fig:pa10drawing' on page 1 undefined on input line 53
 .
 
 
-LaTeX Warning: Citation `craig_robintro' on page 1 undefined on input line 48.
+LaTeX Warning: Citation `craig_robintro' on page 1 undefined on input line 53.
 
 
-Overfull \hbox (0.53654pt too wide) in paragraph at lines 48--49
+Overfull \hbox (0.53654pt too wide) in paragraph at lines 53--54
 \OT1/ptm/m/n/10 pr-vega ka-ta-lo-gi-ra-nega in-du-strij-skega re-dun-da-tnega r
 o-bota
  []
 
 
-LaTeX Warning: Citation `voung_pa10' on page 1 undefined on input line 50.
+LaTeX Warning: Citation `voung_pa10' on page 1 undefined on input line 55.
 
 
-LaTeX Warning: Citation `aalst_pa10' on page 1 undefined on input line 50.
+LaTeX Warning: Citation `aalst_pa10' on page 1 undefined on input line 55.
 
 
-LaTeX Warning: Citation `rodrigo_pa10' on page 1 undefined on input line 50.
+LaTeX Warning: Citation `rodrigo_pa10' on page 1 undefined on input line 55.
 
 
-LaTeX Warning: Citation `petric_nevronska' on page 1 undefined on input line 50
+LaTeX Warning: Citation `petric_nevronska' on page 1 undefined on input line 55
 .
 
 
-LaTeX Warning: Citation `pa10-manual' on page 1 undefined on input line 54.
+LaTeX Warning: Citation `pa10-manual' on page 1 undefined on input line 59.
 
 
-Overfull \hbox (9.58472pt too wide) in paragraph at lines 54--55
+Overfull \hbox (9.58472pt too wide) in paragraph at lines 59--60
 \OT1/ptm/m/n/10 V prej[]snjem po-glavju je bil opi-san ki-ne-mati[]cni in di-na
 mi[]cen
  []
 
 
 LaTeX Warning: Citation `almassri_pressure_sensor' on page 1 undefined on input
- line 56.
+ line 61.
 
 
-LaTeX Warning: Citation `mihelj_vodenje' on page 1 undefined on input line 56.
+LaTeX Warning: Citation `mihelj_vodenje' on page 1 undefined on input line 61.
 
 
 LaTeX Warning: Citation `eppinger_force_dynamics' on page 1 undefined on input 
-line 56.
+line 61.
 
 
-Overfull \hbox (9.46564pt too wide) in paragraph at lines 56--57
+Overfull \hbox (9.46564pt too wide) in paragraph at lines 61--62
 \OT1/ptm/m/n/10 po-zna-va-njem vseh pa-ra-me-trov je v te-o-riji mogo[]ce izra[
 ]cunati
  []
 
-[1{C:/Users/Timotej Gašpar/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
 
 ]
 
-LaTeX Warning: Citation `arc_tutorial' on page 2 undefined on input line 72.
+LaTeX Warning: Citation `arc_tutorial' on page 2 undefined on input line 77.
 
 
-LaTeX Warning: Citation `pa10-manual' on page 2 undefined on input line 73.
+LaTeX Warning: Citation `pa10-manual' on page 2 undefined on input line 78.
 
 
-LaTeX Warning: Citation `pa10-manual' on page 2 undefined on input line 75.
+LaTeX Warning: Citation `pa10-manual' on page 2 undefined on input line 80.
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 79.
-("C:\Program Files\MiKTeX\tex\latex\psnfss\omsptm.fd"
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 84.
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 79.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
 
 
-LaTeX Warning: Reference `fig:controlmode' on page 2 undefined on input line 91
+LaTeX Warning: Reference `fig:controlmode' on page 2 undefined on input line 96
 .
 
 
-LaTeX Warning: Reference `chap:admitance' on page 2 undefined on input line 105
+LaTeX Warning: Reference `chap:admitance' on page 2 undefined on input line 110
 .
 
 
-LaTeX Warning: Citation `jr3_doc_ext' on page 2 undefined on input line 105.
+LaTeX Warning: Citation `jr3_doc_ext' on page 2 undefined on input line 110.
 
 
-LaTeX Warning: Citation `jr3_doc_inst' on page 2 undefined on input line 113.
+LaTeX Warning: Citation `jr3_doc_inst' on page 2 undefined on input line 118.
 
+[2]
 
-LaTeX Warning: Citation `jr3_doc_inst' on page 2 undefined on input line 115.
+LaTeX Warning: Citation `jr3_doc_inst' on page 3 undefined on input line 120.
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 116.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 121.
 
-("C:\Program Files\MiKTeX\tex\latex\psnfss\ot1pcr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Overfull \hbox (19.33566pt too wide) in paragraph at lines 115--117
+Overfull \hbox (19.33566pt too wide) in paragraph at lines 120--122
 []\OT1/ptm/m/n/10 Na ra[]cunalniku, ki se je upo-ra-bljal za to delo, je name[]
 s[]cena
  []
 
 
-Overfull \hbox (30.82104pt too wide) in paragraph at lines 115--117
+Overfull \hbox (30.82104pt too wide) in paragraph at lines 120--122
 \OT1/ptm/m/n/10 dno-stjo $\OML/cmm/m/it/10 F[]$\OT1/ptm/m/n/10 , ki je na re-gi
 -stru iz-bra-nega fil-tra ([]\OT1/pcr/m/n/10 current force\OT1/ptm/m/n/10 ).
  []
 
-[2]
 
-LaTeX Warning: Citation `mihelj_hapt' on page 3 undefined on input line 127.
+LaTeX Warning: Citation `mihelj_hapt' on page 3 undefined on input line 132.
 
 
-Overfull \hbox (0.86629pt too wide) in paragraph at lines 127--128
+Overfull \hbox (0.86629pt too wide) in paragraph at lines 132--133
 []\OT1/ptm/m/n/10 Pred za[]cetkom iz-de-lave la-stnega pro-gram-skega orodja
  []
 
 
-Overfull \hbox (6.04536pt too wide) in paragraph at lines 129--130
+Overfull \hbox (6.04536pt too wide) in paragraph at lines 134--135
 \OT1/ptm/m/n/10 lih po ARC-NET mre[]zi. Hkrati pa mora pro-gram omogo[]cati
  []
 
-[3] (timotej_gaspar_erk.aux)
+[3] (C:\Users\Vaio\Documents\GitHub\ERK\erkLaTeX\timotej_gaspar_erk.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2426 strings out of 493671
- 31705 string characters out of 3145458
- 110478 words of memory out of 3000000
- 5741 multiletter control sequences out of 15000+200000
+ 2315 strings out of 493921
+ 30646 string characters out of 3147285
+ 102236 words of memory out of 3000000
+ 5579 multiletter control sequences out of 15000+200000
  18564 words of font info for 42 fonts, out of 3000000 for 9000
- 1025 hyphenation exceptions out of 8191
- 27i,10n,23p,966b,197s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-r7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Pro
-gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/M
-iKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/u
-rw/times/utmb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><
-C:/Program Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on timotej_gaspar_erk.pdf (3 pages, 121339 bytes).
+ 841 hyphenation exceptions out of 8191
+ 27i,10n,24p,966b,195s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/urw/times/utmri8a.pfb>
+Output written on timotej_gaspar_erk.pdf (3 pages, 122281 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

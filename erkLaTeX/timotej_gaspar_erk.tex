@@ -27,10 +27,15 @@ $^{2}$Institut Jožef Štefan}
 
 %\thispagestyle{empty}
 
-\begin{abstract}{UDP-ARCNET server for kontrol of PA-10 robot}
+\begin{abstract}{UDP-ARCNET server for control of PA-10 robot}
 
-Industrial robots usually have a servo motor controller that allowes users very limited control. In the case of the Mitsubishi Portable Intelligent Arm PA-10 the manufacturer provides a good documentation on the servo driver. It allowes the user to know all the parameters of servo motor regulation. The servo also allowes the user to control each motor separatly in velocity or torque mode oppening various options in terms of experimentation. The servo controller has an ARCNET module for comunication in the ARCNET network.
-A UDP-ARCNET server was built as a man in the middle for servo controller communication. The server allowes the users to control the robot via costum programs that allow UDP communication. For testing purposes an admitance control was implemented.
+Servo motor controller of industrial robots usually allows the users very limited control. Manufacturers hardly provide detailed information on the low level motor control. In spate of that, Mitsubishi Portable Intelligent Arm PA-10 comes with a good documentation on the servo driver. It allows the user to know all the parameters of servo motor regulation. The servo also allows the user to control each motor separately in velocity or torque mode opening various options in terms of control. The servo controller has an ARCNET module for communication in the ARCNET network, through witch the user can access and set the regulation parameters and motor control.
+
+When designing end point robot control, the faster the regulation frequency is, the better performance one can achieve. 
+
+A UDP-ARCNET server was built as a man in the middle for servo controller communication with the wish to achieve high control frequencies. The server allows control frequencies up to 500 Hz. It was build on Linux operating system in the low level programming language C.
+
+The server allows the users to control the robot via custom programs that allow UDP communication. For evaluation purposes of the server, admittance control is implemented and tested.
 
 \end{abstract}
 
@@ -40,7 +45,8 @@ A UDP-ARCNET server was built as a man in the middle for servo controller commun
 \section{Uvod}
 
 Raziskovalne institucije, ki raziskujejo algoritme vodenja robotov imajo izbiro ali konstruirajo svojega robota in s tem poznajo vse njegove dinamične lastnosti ter točno vedo kako se krmilijo motorji ali pa se odločijo za uporabo industrijskega robota. V slednjem primeru pa so prepuščeni podatkom, ki jih dobijo od proizvajalca. Tem pa običajno ni v interesu podati vseh podatkov glede konstrukcije robota ter zgradbe servo krmilnika zaradi bojazni, da bodo prišli v roke konkurenčnim podjetjem.
-Robotski mehanizem Mitsubishi Portable Inteligent Arm PA-10 je iz tega razloga idealen za raziskovalne namene. Poleg že tako bogate dokumentacije in odprtosti krmilnika ga odlikuje še razširjenost po raznih raziskovalnih instituciaj, kar pomeni, da so njegovi dinamični parametri zelo dobro poznani. 
+
+Robotski mehanizem Mitsubishi Portable Inteligent Arm PA-10 je iz tega razloga idealen za raziskovalne namene. Poleg že tako bogate dokumentacije in odprtosti krmilnika ga odlikuje še razširjenost po raziskovalnih institucija, kar pomeni, da so njegovi dinamični parametri zelo dobro poznani. Dodatno pa je proizvajalec podal dokumentacijo v kateri podrobno opiše delovanje krmilnika servo motorjev. 
 
 
 \section{Robotski mehanizem PA-10}
