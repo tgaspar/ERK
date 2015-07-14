@@ -1,0 +1,25 @@
+\centering
+
+\begin{tikzpicture}[node distance=2cm,auto,=>latex',scale=0.65, every node/.style={transform shape}]
+\node [input, name=input] {};
+\node [sum, right of=input] (sum) {};
+\node [block, right of=sum] (jac) {$J^{-1}(q)$};
+\node [block, right of=jac] (k1) {$K_p$};
+\node [right of=k1](pa10){};
+\node [block, right of=k1] (int1) {$\frac{1}{s}$};
+\node [fit = (int1)(pa10), dashed,draw,inner sep=0.45cm, label=$PA - 10$] (Box){};
+\node [support, right of=int1](s1){};
+\node [output, right of=s1] (output) {}; 
+\node [block, below of=k1] (geom) {Geometrijski model}; 
+
+\draw [->] (input) -- node[name = qin] {{$x_{ref}$}} node[pos=0.95] {{\tiny $+$}} (sum);
+\draw [->] (sum) -- node[name = xer] {{$\tilde{x}$}} (jac);
+\draw [->] (jac) -- node[name = qerr] {{$\tilde{q}$}} (k1);
+\draw [->] (k1) -- node[name = u] {{$u$}} (int1);
+\draw [->] (int1) -- node[name = q] {{$q$}} (output);
+\draw [->](s1) |- node[name = q2] {{$q$}}(geom);
+\draw [->](geom) -| node[name = x] {{$x$}}(sum);
+
+
+\fill (s1) circle [radius=2pt];
+\end{tikzpicture}
