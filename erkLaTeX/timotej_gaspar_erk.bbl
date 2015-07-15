@@ -1,11 +1,8 @@
 \begin{thebibliography}{10}
 
 \bibitem{mhi_pa10}
-M.~H.~I. Ltd., ``Mitsubishi clean room robot,'' {\em Seminarska naloga}, 2003.
-
-\bibitem{craig_robintro}
-J.~J. Craig, {\em Introduction to Robotics}.
-\newblock Z.D.A.: Pearson Education International, 2005.
+``Mitsubishi clean room robot,'' {\em Mitsubishi Heavy Industries Ltd.,
+  Technical Review Vol.40 No.5}, 2003.
 
 \bibitem{voung_pa10}
 N.~D. Vuong and M.~H.~J. Ang, ``Dynamic model identification for industrial
@@ -23,10 +20,6 @@ R.~Jamisola, M.~J. Ang, T.~M. Lim, O.~Khatib, and S.~Y. Lim, ``Dynamics
 T.~Petri\v{c} and M.~Munih, ``Kompenzacija trenja in gravitacije na robotu
   mitsubishi pa-10,'' {\em Seminarska naloga}, 2010.
 
-\bibitem{pa10-manual}
-Mitsubishi Heavy Industries, {\em Portable General Purpose Intelligent Arm -
-  Operating Manual}, rev. 1~ed.
-
 \bibitem{almassri_pressure_sensor}
 A.~M. Almassri, W.~Z.~W. Hasan, S.~A. Ahmad, A.~J. Ishak, A.~M. Ghazali, D.~N.
   Talib, and C.~Wada, ``Pressure sensor: State of the art, design, and
@@ -42,20 +35,20 @@ S.~D. Eppinger and W.~P. Seering, ``Three dynamic problems in robot force
   control,'' {\em IEEE Transactions on Robotics and Automation}, pp.~751 --
   758, 1992.
 
-\bibitem{arc_tutorial}
-Contemporary Controls, {\em ARCNET Tutorial}.
-
-\bibitem{jr3_doc_inst}
-I.~JR3, ``{JR3, DPS-based force sensor receivers, software and installation
-  manual}.'' Dosegljivo: \url{http://www.jr3.com/product-manuals.html}.
-\newblock [Dostopano: 6. 17. 2015].
-
 \bibitem{mihelj_hapt}
 M.~Mihelj, {\em Vodenje robotov}.
 \newblock Ljubljana: Univerza v Ljubljani, Zalo{\v{z}}ba FE in FRI, 2011.
 
-\bibitem{zupancic_tr}
-B.~Zupan\v{c}i\v{c}, {\em Teorija regulacij}.
-\newblock Ljubljana: Univerza v Ljubljani, Zalo{\v{z}}ba FE in FRI.
+\bibitem{arc_tutorial}
+Contemporary Controls, {\em ARCNET Tutorial}.
+
+\bibitem{pa10-manual}
+Mitsubishi Heavy Industries, {\em {Portable General Purpose Intelligent Arm -
+  Operating Manual}}.
+
+\bibitem{jr3_doc_inst}
+I.~JR3, ``Jr3, dps-based force sensor receivers, software and installation
+  manual.'' {Dosegljivo: http://www.jr3.com/product-manuals.html}.
+\newblock [Dostopano: 6. 17. 2015].
 
 \end{thebibliography}
