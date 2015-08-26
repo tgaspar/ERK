@@ -41,9 +41,9 @@ $^{2}$Institut »Jožef Stefan«}
 
 Servo motor controllers of industrial robots usually allow the users very limited control. Manufacturers usually do not provide detailed information on the low level motor control. On the other hand, Mitsubishi Portable Intelligent Arm PA-10 comes with a good documentation on the servo driver, and allows the user to know all the parameters of servo motor regulation. The servo also allows the user to control each motor separately in velocity or torque mode, opening various options in terms of control. The servo controller has an ARCNET module for communication in the ARCNET network, through witch the user can access and set the control parameters and motor control.
 
-When designing end point robot control, the faster the control frequency is, the better performance one can achieve. 
+When designing end point robot control, the faster the control frequency is, the better performance one can achie\-ve. 
 
-We implemented a UDP-ARCNET server as a man-in-the-middle for servo controller communication with the wish to achieve high control frequencies. The server allows control frequencies up to 500 Hz. It was built on Linux operating system in the low level programming language C.
+We implemented a UDP-ARCNET server for communication with the robot's servo controller with the goal to achieve higher control frequencies. The server allows control frequencies up to 500 Hz. It was built on Linux operating system in the programming language C.
 
 The server allows the users to control the robot via custom programs that allow UDP communication. For evaluation purposes of the server, admittance control is implemented and tested.
 
@@ -54,36 +54,36 @@ The server allows the users to control the robot via custom programs that allow 
 
 \section{Uvod}
 
-Raziskovalne institucije, ki raziskujejo algoritme vodenja robotov, pogosto uporabljajo industrijske robote. Med razvijanjem algoritmov je pomembno dobro poznavanje dinamičnih parametrov robota ter delovanje krmilnika, vendar podjetja, ki proizvajajo industrijske robote, v večini ne nudijo uporabnikom vseh podatkov.
+Med razvijanjem algoritmov je pomembno dobro poznavanje dinamičnih parametrov robota ter delovanje krmilnika, vendar podjetja, ki proizvajajo industrijske robote, v večini ne nudijo uporabnikom vseh podatkov.
 
-Podjetje Mitsubishi Heavy Industries je leta 1992 izdelalo prvega katalogiranega industrijskega redundantnega robota, Portable General-purpose Intelligent Arm PA-10 \cite{mhi_pa10}. Gre za serijskega robota s sedmimi stopnjami prostosti. Masa robotske roke PA-10 je 36 kg in ima nosilnost 10 kg. Servo motorji v sklepih se napajajo preko izmenične napetosti. Prenosi v sklepih so realizirani z harmoničnimi gonili. Baza robota da se lahko pritrdi v katerokoli lego. To pomeni, da se ga lahko fiksira bodisi na tla, na steno ali na strop. Robota PA-10 odlikuje relativno lahka konstrukcija, enostavno rokovanje ter odprtost njegovega krmilnika. Prav ti razlogi so povod, da mnogo instituciji uporablja robota kot eksperimentalni sistem za razvijanje algoritmov vodenja robotov (\cite{voung_pa10}, \cite{aalst_pa10}, \cite{rodrigo_pa10},\cite{petric_nevronska}).
+Podjetje Mitsubishi Heavy Industries je leta 1992 izdelalo prvega industrijskega redundantnega robota, Portable General-purpose Intelligent Arm PA-10 \cite{mhi_pa10}. Gre za serijskega robota s sedmimi stopnjami prostosti. Masa robotske roke PA-10 je 36 kg in ima nosilnost 10 kg. Baza robota se lahko pritrdi v katerokoli lego. To pomeni, da se ga lahko fiksira bodisi na tla, na steno ali na strop. PA-10 odlikuje relativno lahka konstrukcija, enostavno rokovanje ter odprtost krmilnika. Prav ti razlogi so povod, da mnogo instituciji uporablja PA-10 kot eksperimentalni sistem za razvijanje algoritmov vodenja robotov (\cite{voung_pa10,aalst_pa10,rodrigo_pa10,petric_nevronska}).
 
-Nekatere naloge zahtevajo interakcijo robota z okoljem s določeno silo. S poznavanjem vseh dinamičnih parametrov je v teoriji mogoče izračunati sile, ki delujejo na vrh robota. V praksi se izkaže, da te parametre ni vedno mogoče dovolj natančno definirati. Iz teh razlogov se vgradi senzor sil in navorov med vrhom robota ter prijemalom (\cite{almassri_pressure_sensor}, \cite{mihelj_vodenje}, \cite{eppinger_force_dynamics}). Tako se lahko vodi robota preko inverzne dinamike z upoštevanjem izmerjenih sil. Tako vodenje imenujemo admitančno vodenje \cite{mihelj_hapt}.
+Nekatere naloge zahtevajo interakcijo robota z okolico z določeno silo. S poznavanjem vseh dinamičnih parametrov je v teoriji mogoče izračunati sile, ki delujejo na vrhu robota. V praksi se izkaže, da parametre ni vedno mogoče dovolj natančno definirati. Zato se vgradi senzor sil in navorov med vrhom robota ter prijemalom (\cite{almassri_pressure_sensor,mihelj_vodenje}, \cite{eppinger_force_dynamics}). Tako je možno voditi robota preko inverzne dinamike z upoštevanjem izmerjenih sil. Tako vodenje imenujemo admitančno vodenje \cite{mihelj_hapt}.
 %\section{Robotski mehanizem PA-10}
 
 	
 \section{UDP-ARCNET strežnik}
 
-Proizvajalec Mitsubishi Heavy Industries je za upravljanje in programiranje robota pripravil posebno programsko opremo. Iz dokumentacije je razvidno, kaj vse je njihova programska oprema omogočala. Težava pa je, da omenjena programska oprema ni več dostopna. Proizvajalec je s prodajo robotov PA-10 prenehal v letu 2009, s podporo pa v marcu 2014 (vir: osebno dopisovanje s proizvajalcem). 
+Proizvajalec Mitsubishi Heavy Industries je za vodenje in programiranje robota pripravil posebno programsko opremo. Iz dokumentacije je razvidno, kaj vse je programska oprema omogočala. Težava je, da omenjena programska oprema ni več dostopna. Proizvajalec je s prodajo robotov PA-10 prenehal v letu 2009, s podporo pa v marcu 2014 (vir: osebno dopisovanje s proizvajalcem). 
 
 \subsection{Krmilnik servo motorjev robota} \label{sec:servo-drive}
 
-V ohišju servo krmilnika so vgrajeni štirje krmilniki servo motorjev. Vsak servo krmilnik krmili dva servo motorja, razen enega. Krmilniki omogočajo vodenje motorjev na dva načina: navorno in hitrostno. Navorno vodenje je realizirano z analognim P regulatorjem toka, hitrostna regulacija pa je realizirana z digitalnim PI regulatorjem s frekvenco približno 1500 Hz.
+V ohišju krmilnika so vgrajeni štirje servo krmilniki motorjev. Vsak servo krmilnik krmili dva servo motorja, razen enega. Krmilniki omogočajo vodenje motorjev na dva načina: navorno in hitrostno. Navorno vodenje je realizirano z analognim P regulatorjem toka, hitrostna regulacija pa je realizirana z digitalnim PI regulatorjem s frekvenco 1500 Hz.
 
 Krmilnik vsebuje dva pomnilnika. Delovni pomnilnik (RAM) in nastavitveni pomnilnik (EEPROM). V EEPROM tabeli so zapisani parametri za nastavitve in vodenje servo krmilnikov. Ob zagonu krmilnika se parametri naložijo iz EEPROM tabele v RAM. Med temi parametri so tudi ojačanje proporcionalnega ter integracijskega dela regulatorja, omejitve posameznih stopenj, razmerje prenosa zobnikov, itd.
 
 \subsection{ARCNET vmesnik}\label{sec:arc_drive}
 
 Referenčne navore in hitrosti se na krmilniku nastavlja preko zunanjega vmesnika, ki je povezan na enako ARCNET omrežje kot servo krmilnik. ARCNET je omrežje, ki vključuje podatkovni in fizični nivo po OSI modelu, komunikacija po omrežju pa je serijska in paketno zastavljena. Njegova prednost pred Ethernet omrežjem je velika stopnja determinističnosti \cite{arc_tutorial}. Krmilnik ima dva priključka za optični 
-vodili, vhod (Rx) ter izhod (Tx). Zgornja meja hitrosti komunikacije z krmilnikom robota PA-10 je 5 Mb/s \cite{pa10-manual}.
+vodili, vhod (Rx) ter izhod (Tx). Zgornja meja hitrosti komunikacije s krmilnikom robota PA-10 je 5 Mb/s \cite{pa10-manual}.
 
 \subsection{Senzor sile in navorov - JR3}	
 
-Na vrh robota smo pritrdili senzor sil in navorov JR3. Senzor omogoča merjenje sil in navorov v $x$, $y$ in $z$ oseh. Uporovni lističi porazdeljeni po notranjosti senzorja se deformirajo pod vplivom sile. Upornost na uporovnih lističih spremeni proporcionalno s silo, ki deluje na senzor. Sprememba upornosti se izmeri posredno preko spreme\-mbe napetosti na AD-pretvorniku, ki je vgrajen v sam senzor. 
+Na vrh robota smo pritrdili senzor sil in navorov JR3. Senzor omogoča merjenje sil in navorov v $x$, $y$ in $z$ oseh. Uporovni lističi porazdeljeni po notranjosti senzorja se deformirajo pod vplivom sile. Upornost na uporovnih lističih se spremeni proporcionalno s silo, ki deluje na senzor. Sprememba upornosti se izmeri posredno preko spreme\-mbe napetosti na AD-pretvorniku, ki je vgrajen v sam senzor. 
 
 Senzor se priključi preko 6 ali 8 žilnega vodila na računalniško kartico. Senzor serijsko pošilja podatke o izmerjenih silah na kartico. Kartica vsebuje vezje za digitalno obdelavo signalov. V dokumentaciji kartice \cite{jr3_doc_inst} so opisani trije nizkoprepustni filtri z različnimi mejnimi frekvencami. Uporabili smo filter z mejno frekvenco 500 Hz.
 
-Na računalniku je bila nameščena kartica na vodilu ISA. Ker je standard starejši, je podjetje prenehalo s podporo tega standarda. Kot posledica tega smo dela razvili svojo programsko opremo za komunikacijo z notranjimi registri kartice.
+Na računalniku je bila nameščena kartica na vodilu ISA. Ker je standard starejši, je podjetje prenehalo s podporo tega standarda. Kot posledica tega smo razvili svojo programsko opremo za komunikacijo z notranjimi registri kartice.
 
 \subsection{Strežnik} \label{sec:streznik}
 
@@ -94,18 +94,18 @@ Na računalniku je bila nameščena kartica na vodilu ISA. Ker je standard stare
 	\label{fig:server}
 \end{figure}
 
-Pred začetkom izdelave lastnega programskega orodja se je definiralo dve zahtevi. Prva je bila, da program deluje kar se le da hitro in kar se le da v realnem času. To izhaja iz vidika stabilnosti vodenja. Mihelj v \cite{mihelj_hapt} namreč navaja, da vzorčni čas močno vpliva na stabilnost vodenja robota v kontaktu z okolico. Večja kot je vzorčna frekvenca večja je lahko togost okolice s katero je robot v kontaktu.
+Pred začetkom izdelave lastnega programskega orodja smo definirali dve zahtevi. Prva je bila, da program deluje kar se le da hitro in kar se le da v realnem času. To izhaja iz vidika stabilnosti vodenja. Mihelj v \cite{mihelj_hapt} namreč navaja, da vzorčni čas močno vpliva na stabilnost vodenja robota v kontaktu z okolico. Večja kot je vzorčna frekvenca večja je lahko togost okolice s katero je robot v kontaktu.
 
-Druga zahteva pa je bila enostavna uporaba. Želeli smo, da uporaba programske opreme, ki jo naredimo, zahteva čim manj predznanja o komunikacijskih protokolih po ARCNET mreži. Hkrati pa mora program omogoča\-ti neko mero svobode pri realizaciji visoko nivojskega vodenja.
+Druga zahteva pa je bila enostavna uporaba. Želeli smo, da uporaba programske opreme, ki jo razvijemo, zahteva čim manj predznanja o komunikacijskih protokolih po ARCNET mreži. Hkrati pa mora program omogoča\-ti neko mero svobode pri realizaciji visoko nivojskega vodenja.
 
-Dodatno se je kasneje pojavila še želja, da bi programska oprema omogočala tudi posredovanje meritev izvedenih na senzorju sile JR3. Tako bi nastal program, ki bi komuniciral tako s servo kontrolerjem kot z ISA kartico za senzor sile JR3.
+Dodatno se je kasneje pojavila še želja, da bi programska oprema omogočala tudi posredovanje rezulatov meritev izvedenih na senzorju sile JR3. Tako bi nastal programski modul, ki bi komuniciral tako s servo krmilnkom kot z ISA kartico za senzor sile JR3.
 
-Naštete zahteve so privedle do izbire primernega operacijskega sistema in programskega jezika. Razvili smo strežnik v programskem jeziku C na operacijskem sistemu Linux. Strežnik deluje kot posrednik med dvema različnima omrežjema, ARCNET in Ethernet (slika \ref{fig:server}). Stre\-žnik je nastavljen za delovanje s časovnim ciklom $2$ ms. Standardna deviacija od nastavljenega programskega cikla na strežniku je  $\pm 0.00086 $ ms. Časovni potek časovnega cikla med delovanjem programa prikazuje slika \ref{fig:jittergraph}.
+Naštete zahteve so privedle do izbire primernega operacijskega sistema in programskega jezika. Razvili smo strežnik v programskem jeziku C na operacijskem sistemu Linux. Strežnik deluje kot posrednik med dvema različnima omrežjema, ARCNET in Ethernet (slika \ref{fig:server}). Stre\-žnik je konfiguriran za delovanje s časovnim ciklom $2$ ms. Standardna deviacija od nastavljenega programskega cikla na strežniku je  $\pm 0.00086 $ ms. Časovni potek časovnega cikla med delovanjem programa prikazuje slika \ref{fig:jittergraph}.
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./slike/figure_jitter}
-	\caption{Odstopanje programskega cikla med delovanjem strežnika}
+	\caption{Odstopanje programskega cikla med delovanjem strežnika. Pri malo več kot 25 s poteka programa opazimo skok v zakasnitvi. To nastane, ko si operacijski sistem vzame nekaj procesorskega časa za izvedbo operacij, ki so pomembne za delovanje sistema.}
 	\label{fig:jittergraph}
 	
 \end{figure}
@@ -117,7 +117,7 @@ Vodenje robota preko vhodnih hitrostih v sklepih uporablja PI regulator v krmiln
 
 \subsection{Vodenje v notranjih koordinatah} \label{sec:admit_inner}
 
-Krmilnik servo motorjev nam v vsakem danem trenutku vrača trenuten kot v sklepu. Ker ima PI regulator visoka ojačanja ter visoko frekvenco, bomo za namene poenostavitve aproksimirali motor kot integrator $\frac{1}{s}$. Naj bo referenčni kot v sklepih označen z $\textbf{q}_{\mathrm{ref}}$ in naj bo dejanski kot označen z $\textbf{q}$. Razlika med njima je napaka v kotu 
+Krmilnik servo motorjev v vsakem danem trenutku vrača trenuten kot v sklepu. Ker ima PI regulator visoka ojačanja ter visoko frekvenco delovanja, bomo za namene poenostavitve aproksimirali motor kot integrator $\frac{1}{s}$. Naj bo referenčni kot v sklepih označen z $\textbf{q}_{\mathrm{ref}}$ in naj bo dejanski kot označen z $\textbf{q}$. Razlika med njima je napaka v kotu 
 
 \begin{equation}
 \tilde{\textbf{q}} = \textbf{q}_{\mathrm{ref}} - \textbf{q}.
@@ -143,20 +143,20 @@ Naj bo $\textbf{x}_{\mathrm{ref}}$ vektor referenčne lege vrha robota in naj bo
 \tilde{\textbf{x}} = \textbf{x}_{\mathrm{ref}}  - \textbf{x}
 \end{equation}
 
-Enačba direktne kinematike nam govori o odnosu med hitrostjo vrha robota ter hitrostjo v sklepih robota
+Enačba direktne kinematike govori o odnosu med hitrostjo vrha robota ter hitrostjo v sklepih robota
 
 \begin{equation} \label{eq:qtox}
 \dot{\textbf{x}} = \textbf{J}(\textbf{q})  \dot{\textbf{q}}.
 \end{equation}
 
-To enačbo je mogoče razumeti tudi kot zvezo med spremembo položaja vrha ter sklepov robota \cite{mihelj_vodenje}. Zato je mogoče to enačbo uporabiti za zapis relacije med napako vrha ter potrebnim odmikov v sklepih preko enačbe za inverzno kinematiko
+To enačbo je mogoče razumeti tudi kot zvezo med spremembo položaja vrha ter sklepov robota \cite{mihelj_vodenje}. Zato je mogoče enačbo uporabiti za zapis relacije med napako vrha ter potrebnim odmikov v sklepih preko enačbe za inverzno kinematiko
 
 \begin{equation} \label{eq:qerr}
 \tilde{\textbf{q}} = \textbf{J}^{\#}(\textbf{q})  \tilde{\textbf{x}}.
 \end{equation}
 $\mathbf{J}^{\#} =  \mathbf{J}^{T} (\mathbf{J} \mathbf{J}^T)^{-1}$ je generaliziran pseudoinverz Jacobijeve matrike.
 
-Z vstavitvijo enačbe (\ref{eq:qtox}) v (\ref{eq:p_reg_q}) dobimo P regulator lege vrha robota Sedaj je mogoče regulirni signal, ki krmili hitrost v sklepih robota tako, da bo vrh sledil referenčni legi
+Z vstavitvijo enačbe (\ref{eq:qtox}) v (\ref{eq:p_reg_q}) dobimo P regulator lege vrha robota. Sedaj je mogoče regulirni signal, ki krmili hitrost v sklepih robota, krmiliti tako, da bo vrh sledil referenčni legi
 
 \begin{equation} \label{eq:outcontrol}
 \textbf{u} = \textbf{K}_p  \textbf{J}^{\#}(\textbf{q})  (\textbf{x}_{ref} - \textbf{x}).
@@ -167,7 +167,7 @@ V \cite{mihelj_vodenje} je navedeno, da se mehanski sistem, ki je voden na ta na
 
 \subsection{Admitančno vodenje} \label{sec:vodenje-admitance}
 
-Robotski mehanizem PA-10 je industrijski robot s segmenti iz pretežno litega železa. Segmenti imajo relativno veliko maso, sklepi pa relativno visoko trenje. Lahko predpostavimo, da ima manipulator veliko lastno impedanco. Pojem mehanske impedance izvira iz analogije električne impedance. Predstavlja pa razmerje med silo (\textit{F}) in hitrostjo (\textit{v}) 
+Robotski mehanizem PA-10 je industrijski robot s segmenti iz pretežno litega železa. Segmenti imajo relativno veliko maso, sklepi pa relativno visoko trenje. Zaradi tega lahko predpostavimo, da ima manipulator veliko lastno impedanco. Pojem mehanske impedance izvira iz analogije električne impedance, predstavlja pa razmerje med silo (\textit{F}) in hitrostjo (\textit{v}) 
 
 \begin{equation}
 Z(s) = \frac{F}{v} = ms + b + \frac{k}{s}
@@ -177,11 +177,11 @@ oziroma razmerje med silo in pozicijo (\textit{x})
 \begin{equation}
 Z(s) = \frac{F}{x} = ms^2 + bs + k,
 \end{equation}
-kjer je \textit{m} masa, \textit{b} viskozno dušenje, \textit{k} togost \cite{mihelj_hapt}.
+kjer je \textit{m} masa, \textit{b} viskozno dušenje in \textit{k} togost \cite{mihelj_hapt}.
 
 
 
-Za admitančno vodenje je potrebno še upoštevati podatek o silah in navorih, ki delujejo na vrhu robota. Izmerjene sile in navori bodo označene s $\textbf{h}_{\mathrm{JR3}}$, referenčne sile in navori pa z $\textbf{h}_{\mathrm{ref}}$. Napaka sile je tako definirana kot:
+Za admitančno vodenje je potrebno še upoštevati podatek o silah in navorih, ki delujejo na vrhu robota. Izmerjene sile in navori so označene s $\textbf{h}_{\mathrm{JR3}}$, referenčne sile in navori pa z $\textbf{h}_{\mathrm{ref}}$. Napaka sile je tako definirana kot:
 \begin{equation} \label{eq:herr}
 \tilde{\textbf{h}} = \textbf{h}_{\mathrm{ref}} - \textbf{h}_{\mathrm{JR3}}.
 \end{equation}
@@ -192,7 +192,7 @@ Sila kot rezultat delovanja robota na okolico je odvisna od hitrosti oz. pozicij
 \textbf{x}_{\mathrm{ref}} = \textbf{K}_{hP}\tilde{\textbf{h}} + \textbf{K}_{hI} \int_{0}^{t}\tilde{\textbf{h}}d\xi.
 \end{equation}
 
-Dobili smo PI regulator sile interakcije. Čeprav je bilo pri definiciji mehanske impedance definirano, da je to razmerje med silo ter hitrostjo, se raje uporablja razmerje med silo ter pozicijo. Meritve sile so podvržene šumu, integrator pa deluje kot nizkopasovni filter. Z vpeljavo integratorja, dosežemo to, da se bo robot premikal v smeri želene sile s hitrostjo $\textbf{K}_{hI} \tilde{\textbf{h}}$.
+Na ta način smo določili PI regulator sile interakcije. Čeprav je bilo pri definiciji mehanske impedance definirano, da je to razmerje med silo in hitrostjo, se raje uporablja razmerje med silo in pozicijo. Meritve sile so podvržene šumu, integrator pa deluje kot nizkopasovni filter. Z vpeljavo integratorja, dosežemo to, da se bo robot premikal v smeri želene sile s hitrostjo $\textbf{K}_{hI} \tilde{\textbf{h}}$.
 
 Z vstavitvijo enačbe (\ref{eq:xrefforce}) v (\ref{eq:outcontrol}) je mogoče zapisati celotno regulacijsko enačbo za vodenje robota v zunanjih koordinatah z upoštevanjem delovanja zunanjih sil na vrh robota.
 
@@ -230,7 +230,7 @@ Zgrajen strežnik smo ovrednotili z vodenjem robota v kontaktu s togo okolico. N
 	
 \end{figure}
 
-Na sliki \ref{fig:stepgraphs} je razvidno, da je pri 100 Hz sistem pri enakih parametrih regulatorja, $K_{hP}$ in $K_{hI}$, ni več stabilen, saj odskakuje od podlage, kar je vidno v spremenljivi sili. Pri 500 Hz se lahko robot dotakne toge okolice in ohranja referenčno silo.
+Na sliki \ref{fig:stepgraphs} je razvidno, da je pri vzorčnem 100 Hz sistem pri enakih parametrih regulatorja, $K_{hP}$ in $K_{hI}$, ni več stabilen, saj odskakuje od podlage, kar je vidno v spremenljivi sili. Pri vzorčnem času 500 Hz se lahko robot dotakne toge okolice in ohranja referenčno silo.
 
 Nato smo ovrednotili vodenje strežnika s 500 Hz pri referenčnem signalu sinusne oblike. Rezultate pri različnih frekvencah sinusnega signala so prikazani na sliki \ref{fig:sineref}.
 
@@ -264,7 +264,7 @@ Iz grafov je videti, da robot dobro sledi referenci do frekvence sinusnega signa
 
 \section{Zaključek}
 
-Vodenje robotov v kontaktu z togo okolico zahteva visoko vzorčno frekvenco. Admitančno vodenje omogoča vodenje sile vrha robota preko hitrosti v sklepih vendar je zato potrebno namestiti ustrezen senzor. Namenski strežnik, ki je bil zgrajen za vodenje robota PA-10 dosega zastavljene cilje. Hkrati pa omogoča prilagoditev na dodatne funkcije v kolikor bodo te v prihodnosti potrebne. Nadaljnje delo bo implementirati vodenje preko dinamičnega modela. 
+Vodenje robotov v kontaktu s togo okolico zahteva visoko vzorčno frekvenco. Admitančno vodenje omogoča vodenje sile vrha robota preko hitrosti v sklepih vendar je zato potrebno namestiti ustrezen senzor. Namenski strežnik, ki je bil zgrajen za vodenje robota PA-10 dosega zastavljene cilje. Hkrati pa omogoča prilagoditev na dodatne funkcije v kolikor bodo te v prihodnosti potrebne. Nadaljnje delo bo implementirati vodenje preko dinamičnega modela. 
 
 \small
 
